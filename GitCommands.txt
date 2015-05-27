@@ -1,0 +1,267 @@
+Initialize a repo in an existing directory:
+$ git init
+
+Staging files: $ git add README.txt
+
+$ git commit -m 'Initial commit'
+
+Cloning an existing repo: $ git clone link
+
+Checking status: $ git status 
+
+Tracing new files (What was staged): 
+$git add file_name
+$git status
+
+Creating .gitignore file:
+$ cat .gitignore
+*.[oa]
+*~
+and anything else to be ignored
+
+To see your staged and unstaged changes:
+$ git diff
+
+To see what stages will go into the next commit
+$ git diff --cached
+
+Commit staged changes:
+$ git commit
+than type a message
+
+To see what you've modified:
+$ git commit -v
+
+Commit with a message:
+$ git commit -m "comment or message"
+
+Commit with skipping staging:
+$ git commit -a -m 'Added new changes'
+
+Removing a file:
+remove it from staging  
+$ rm file_name
+$ git status 
+
+or:
+$ git rm file_name
+$ git status
+
+Force removal (if you added it already):
+$ git rm -f file_name
+
+To remove only from a git, but not your working copy:
+$ git rm --cached file_name
+
+Rename a file in git:
+$ git mv File_from File_to
+
+Viewing the commit history:
+$ git log
+
+Shows only 2 last changes with diffs made:
+$ git log -p -2 
+
+Changing the last commit(didn't work for me):
+$ git commit --amend
+
+Unstaging a staged file:
+$ git reset HEAD File_name
+
+Unmodifiing a modified file (didn't work for me):
+$ git checkout -- file_name
+$ git status
+
+Showing your remotes:
+$ git remote    (gives the name - origin)
+$ git remote -v  (gives the URL)
+
+Adding remote repo:
+$ git remote add [short_name] [URL]:
+
+Fetching:
+$ git fetch remote_name
+example: $ git fetch origin
+
+Merging (after fetching):
+$ git merge
+
+Or PUll:
+$ git pull
+
+PUSHING:
+$ git push remote_name branch_name
+example: $ git push origin master
+
+Inspecting a remote:
+$ git remote show remote_name
+example: $ git remote show origin
+
+Renaming remotes:
+$ git remote rename old_name new_name
+$ git remote
+
+Removing remotes:
+$ git remote rm name
+$ git remote
+
+Tags:
+Listing your tags:
+$ git tag
+or
+$ git tag -l v1.4.2
+
+Creating tags:
+annotated:
+$ git tag -a v1.4 -m 'my version 1.4'
+$ git tag
+
+$ git show v1.4
+
+Lightweight tags (without -a, -s, -m):
+$ git tag v1.4-lw
+$ git tag
+
+To get the name of the nearest tag with the number of commits on the top of that tag:
+$ git describe master
+
+CREATING A BRANCH:
+$ git branch branch_name
+
+To swith to another branch:
+$ git checkout branch_name
+
+To create a new branch and switch to it at the same time:
+$ git checkout -b branch_name
+
+Examples of creating a new branch:
+$ git checkout -b 'hotfix'
+or $ git checkout -b hotfix
+
+Merging back a branch to a master:
+$ git checkout master
+$ git merge hotfix
+
+Deleting a branch that was merged to master:
+$ git branch -d branch_name
+
+Resolving a conflict:
+[master*] $ git status
+
+Merging tool: 
+$ git mergetool
+(exit from a mode - Control + C)
+
+Listing of your branches:
+$ git branch
+
+To see the last commit on each branch:
+$ git branch -v
+
+To see which branches are merged:
+$ git branch --merged
+
+To see which branches are not merged:
+$ git branch --no-merged
+
+Force to delete the branch which wasn't merged:
+$ git branch -D branch_name
+
+Remote branches:
+origin/master
+origin/branch_name
+
+To synchronize your work with the remote branch:
+$ git fetch origin
+$ git fetch remote_branch_name
+
+PUSHING TO A REMOTE:
+$ git push remote_branch_name your_branch_name
+or
+$ git push remote_branch_name your_branch_name:branch_you_want_to_push
+example:
+$ git push origin serverfix
+
+To merge some branch to a current working branch:
+$ git merge origin/branch_name
+
+To base this branch as your working branch:
+$ git checkout -b branch_name origin/branch_name
+
+To track a branch:
+$ git checkout --track origin/branch_name
+
+To set up a local branch with a different name than the remote branch:
+$ git checkout -b name origin/branch_name
+
+Deleting a remote branch:
+$ git push [remotename] :[branch]
+example:
+$ git push origin :hotfix
+
+REBASING:
+$ git checkout branch_name
+$ git rebase master 
+
+Force push (after rebase):
+$ git push -f myfork branch_name
+
+To add local repo to an existing Git project:
+$ git remote add local_project project_location.git
+
+SETTING GIT ON A SERVER:
+
+To clone your repo to create a new bare repo:
+$ git clone -- bare my_project my_project.git
+
+Putting the bare repo on a server:
+$ scp -r my_project.git user@git.example.com:/opt/git
+
+Check for whitespace errors:
+$ git diff --check
+
+Pull request:
+$ git request-pull origin/master myfork
+
+Cherry-Picking:
+$ git cherry-pick commit_number
+
+To create a snapshot of a code:
+$ git archive master --prefix='project/' | gzip > `git describe master`.tar.gz
+$ ls *.tar.gz
+or:
+$ git archive master --prefix='project/' --format=zip > `git describe master`.zip
+
+To save unfinished changes that you don't want to commit yet:
+$ git stash
+
+To see which stashed you've stored:
+$ git stash list
+
+To apply stash:
+$ git stash apply
+or: 
+$ git stash apply stash@{n}
+
+To reapply the staged changes:
+$ git stash apply --index
+
+To remove the stash:
+$ git stash list (to show all stahses first)
+$ git stash drop stash@{n}
+
+To apply the stash and then immediately drop it from your stack:
+$ git stash pop
+
+To create a new branch from stashed work, reapply it and drop the stash:
+$ git stash branch branch_name
+
+To modify your last commit message:
+$ git commit --amend
+
+Your identity:
+$ git config --global user.name "My Name"
+$ git config --global user.email you@email.com
+
+Checking your settings:
+$ git config --list 
