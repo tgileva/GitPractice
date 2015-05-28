@@ -62,13 +62,13 @@ $ git log
 Shows only 2 last changes with diffs made:
 $ git log -p -2 
 
-Changing the last commit(didn't work for me):
+Changing the last commit:
 $ git commit --amend
 
 Unstaging a staged file:
 $ git reset HEAD File_name
 
-Unmodifiing a modified file (didn't work for me):
+Unmodifiing a modified file:
 $ git checkout -- file_name
 $ git status
 
