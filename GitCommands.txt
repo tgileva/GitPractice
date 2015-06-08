@@ -266,4 +266,8 @@ $ git config --global user.email you@email.com
 Checking your settings:
 $ git config --list 
 
+Force to pull from master:
+$ git fetch --all
+$ git reset --hard origin/master
+
 __________________________________________________________
